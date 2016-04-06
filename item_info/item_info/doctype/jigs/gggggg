@@ -1,0 +1,87 @@
+<style type="text/css">
+	.stop-items {
+		overflow-y: scroll;
+		max-height: 300px 
+	}
+</style>
+
+<div class="stop-items">
+  	<table class="table table-bordered table-condensed">
+	   	<thead>
+	      <tr>
+	        <td align="center"><b>Suggested Items</b></td>
+	        <td align="center"><b>Alternate Items</b></td>
+	        <td align="center"><b>Accessory Items</b></td>
+	      </tr>
+	    </thead>
+    		{% for(var s=0, ls=max; s < ls; s++) { %}
+    		 <tr>
+    		 	<td align="center" id="item_code">
+    			{% if(items["Suggested Items"][s]){ %}	
+    			{{ items["Suggested Items"][s].item_code }}
+    			<input type="checkbox" class="all">
+    			{% } %}
+    			</td>
+
+    			<td align="center" id="item_code">
+    			{% if(items["Alternate Items"][s]){ %}	
+    			{{ items["Alternate Items"][s].item_code }}
+    			<input type="checkbox" class="all">
+    			{% } %}    			
+    			</td>
+
+    			<td align="center" id="item_code">
+    			{% if(items["Accessory Items"][s]){ %}	
+    			{{ items["Accessory Items"][s].item_code }}
+    			<input type="checkbox" class="all">
+    			{% } %}
+    			</td>
+    		</tr>
+			{% } %}
+  	</table>
+</div>
+
+
+
+
+
+
+
+
+                <td align="center" id="item_code">
+                {% if(items["Suggested Items"][s]){ %}  
+                {{ items["Suggested Items"][s].item_code }}
+                </td>
+                <td align="center" id="check_id">
+                   <input type="checkbox" class="select" data-idx="{%= items["Suggested Items"][s].item_code %}"></input>
+                </td>
+                {% } %}
+
+
+                {% if(items["Alternate Items"][s]){ %}  
+                <td align="center" id="item_code">
+                {{ items["Alternate Items"][s].item_code }}
+                </td>
+                <td align="center" id="check_id">
+                   <input type="checkbox" class="select" data-idx="{%= items["Alternate Items"][s].item_code %}"></input>
+                </td>
+                {% } %}
+
+                {% if(items["Accessory Items"][s]){ %}  
+                <td align="center" id="item_code">
+                {{ items["Accessory Items"][s].item_code }}
+                </td>
+                <td align="center" id="check_id">
+                   <input type="checkbox" class="select" data-idx="{%= items["Accessory Items"][s].item_code %}"></input>
+                </td>
+                {% } %}
+
+
+
+
+
+
+
+                    $('.frappe-control input:checkbox:checked').each(function(){
+        items_to_add.push($(this).val());
+    })
